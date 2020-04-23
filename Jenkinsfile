@@ -37,7 +37,7 @@ pipeline{
 						--name capstone-project \
 						--version 1.13 \
 						--nodegroup-name standard-workers \
-						--node-type t2.micro \
+						--node-type t2.small \
 						--nodes 2 \
 						--nodes-min 1 \
 						--nodes-max 3 \
