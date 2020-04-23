@@ -29,14 +29,14 @@ pipeline{
 			}
 		}
 
-		stage('Create kubernetes cluster') {
+		stage('Creating kubernetes cluster') {
 			steps {
 				withAWS(region:'us-west-2', credentials:'static') {
 					sh '''
 						curl --silent --location "https://github.com/weaveworks/eksctl/releases/latest/download/eksctl_$(uname -s)_amd64.tar.gz" | tar xz -C /tmp
 						sudo mv /tmp/eksctl /usr/local/bin
 						eksctl version
-						eksctl create cluster --name capstone-project --version 1 \
+						eksctl create cluster --name capstone-project --version 1.13 \
 												--nodegroup-name standard-workers \
 												--node-type t2.micro \
 												--nodes 2 \
