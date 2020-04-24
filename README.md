@@ -23,4 +23,4 @@ sudo apt-get update
 sudo apt-get install -y jenkins
 ```
 
-
+I followed this [procedure](https://medium.com/@andresaaap/capstone-cloud-devops-nanodegree-4493ab439d48) to build my pipeline
