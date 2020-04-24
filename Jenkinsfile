@@ -1,7 +1,7 @@
 pipeline{
     agent any
     stages{
-        stage('Lint HTML'){
+        stage('Lint HTML Test'){
             steps {
                 sh '''
 					tidy -q -e *.html
@@ -91,7 +91,7 @@ pipeline{
 			}
 		}
 
-		stage('Create the service in the cluster, redirect to blue') {
+		stage('Create the service in the cluster and redirect to blue') {
 			steps {
 				withAWS(region:'us-west-2', credentials:'static') {
 					sh '''
@@ -103,11 +103,11 @@ pipeline{
 
 		stage('Wait user approve') {
             steps {
-                input "Ready to redirect traffic to green?"
+                input "Redirect traffic to green?"
             }
         }
 
-		stage('Create the service in the cluster, redirect to green') {
+		stage('Create the service in the cluster and redirect to green') {
 			steps {
 				withAWS(region:'us-west-2', credentials:'static') {
 					sh '''
