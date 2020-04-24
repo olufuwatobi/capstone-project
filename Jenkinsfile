@@ -9,7 +9,7 @@ pipeline{
 				'''
             }
         }
-        stage('Build Docker Image') {
+        stage('Build Image') {
 			steps {
 				withCredentials([[$class: 'UsernamePasswordMultiBinding', credentialsId: 'DockerID', usernameVariable: 'DOCKER_USERNAME', passwordVariable: 'DOCKER_PASSWORD']]){
 					sh '''
@@ -18,7 +18,7 @@ pipeline{
 				}
 			}
 		}
-        stage('Push Image To Dockerhub') {
+        stage('Push Image') {
 			steps {
 				withCredentials([[$class: 'UsernamePasswordMultiBinding', credentialsId: 'DockerID', usernameVariable: 'DOCKER_USERNAME', passwordVariable: 'DOCKER_PASSWORD']]){
 					sh '''
@@ -29,7 +29,7 @@ pipeline{
 			}
 		}
 
-		stage('Creating kubernetes cluster') {
+		stage('Kubernetes cluster creation') {
 			steps {
 				withAWS(region:'us-west-2', credentials:'static') {
 					sh '''
